@@ -19,6 +19,11 @@
 		EA7F4D41277B2AFD00574DCF /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = EA7F4D40277B2AFD00574DCF /* FirebaseStorage */; };
 		EAC11C0B277B3BB600FE981B /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = EAC11C0A277B3BB600FE981B /* .gitignore */; };
 		EAC11C0D277B3BD700FE981B /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = EAC11C0C277B3BD700FE981B /* README.md */; };
+		EAC11C0F277B45BD00FE981B /* RegisterPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC11C0E277B45BD00FE981B /* RegisterPageViewController.swift */; };
+		EAC11C12277B472100FE981B /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC11C11277B472100FE981B /* ImageView.swift */; };
+		EAC11C14277B47BA00FE981B /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC11C13277B47BA00FE981B /* Activity.swift */; };
+		EAC11C16277B4F3100FE981B /* LoginPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC11C15277B4F3100FE981B /* LoginPageViewController.swift */; };
+		EAC11C18277B9F2F00FE981B /* CourseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC11C17277B9F2F00FE981B /* CourseNavigationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +38,11 @@
 		EA7F4D39277B28FA00574DCF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EAC11C0A277B3BB600FE981B /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = .gitignore; path = ../.gitignore; sourceTree = "<group>"; };
 		EAC11C0C277B3BD700FE981B /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		EAC11C0E277B45BD00FE981B /* RegisterPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPageViewController.swift; sourceTree = "<group>"; };
+		EAC11C11277B472100FE981B /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
+		EAC11C13277B47BA00FE981B /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
+		EAC11C15277B4F3100FE981B /* LoginPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPageViewController.swift; sourceTree = "<group>"; };
+		EAC11C17277B9F2F00FE981B /* CourseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseNavigationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +64,7 @@
 			children = (
 				EAC11C0A277B3BB600FE981B /* .gitignore */,
 				EAC11C0C277B3BD700FE981B /* README.md */,
+				EAC11C10277B46F200FE981B /* Utill */,
 				EA7F4D32277AEA7800574DCF /* Model */,
 				EA7F4D33277AEA8600574DCF /* View */,
 				EA7F4D34277AEA9400574DCF /* Controller */,
@@ -76,6 +87,9 @@
 				EA7F4D132779B0F400574DCF /* AppDelegate.swift */,
 				EA7F4D152779B0F400574DCF /* SceneDelegate.swift */,
 				EA7F4D172779B0F400574DCF /* LandingViewController.swift */,
+				EAC11C0E277B45BD00FE981B /* RegisterPageViewController.swift */,
+				EAC11C15277B4F3100FE981B /* LoginPageViewController.swift */,
+				EAC11C17277B9F2F00FE981B /* CourseNavigationController.swift */,
 				EA7F4D1C2779B0F700574DCF /* Assets.xcassets */,
 				EA7F4D1E2779B0F700574DCF /* LaunchScreen.storyboard */,
 				EA7F4D212779B0F700574DCF /* Info.plist */,
@@ -104,6 +118,15 @@
 			children = (
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		EAC11C10277B46F200FE981B /* Utill */ = {
+			isa = PBXGroup;
+			children = (
+				EAC11C11277B472100FE981B /* ImageView.swift */,
+				EAC11C13277B47BA00FE981B /* Activity.swift */,
+			);
+			path = Utill;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -188,8 +211,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAC11C18277B9F2F00FE981B /* CourseNavigationController.swift in Sources */,
+				EAC11C14277B47BA00FE981B /* Activity.swift in Sources */,
+				EAC11C12277B472100FE981B /* ImageView.swift in Sources */,
+				EAC11C0F277B45BD00FE981B /* RegisterPageViewController.swift in Sources */,
 				EA7F4D182779B0F400574DCF /* LandingViewController.swift in Sources */,
 				EA7F4D142779B0F400574DCF /* AppDelegate.swift in Sources */,
+				EAC11C16277B4F3100FE981B /* LoginPageViewController.swift in Sources */,
 				EA7F4D162779B0F400574DCF /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
