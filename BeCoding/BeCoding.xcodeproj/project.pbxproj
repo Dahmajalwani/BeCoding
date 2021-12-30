@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EA6D2210277C836B008D2113 /* CourseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6D220F277C836B008D2113 /* CourseCollectionViewCell.swift */; };
+		EA6E4C52277C489A00626E93 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6E4C51277C489A00626E93 /* User.swift */; };
+		EA6E4C54277C565E00626E93 /* Courses.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6E4C53277C565E00626E93 /* Courses.swift */; };
+		EA6E4C56277C591900626E93 /* InformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6E4C55277C591900626E93 /* InformationViewController.swift */; };
+		EA6E4C58277C5EC600626E93 /* AddInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6E4C57277C5EC600626E93 /* AddInformationViewController.swift */; };
 		EA7F4D142779B0F400574DCF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7F4D132779B0F400574DCF /* AppDelegate.swift */; };
 		EA7F4D162779B0F400574DCF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7F4D152779B0F400574DCF /* SceneDelegate.swift */; };
 		EA7F4D182779B0F400574DCF /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7F4D172779B0F400574DCF /* LandingViewController.swift */; };
@@ -27,6 +32,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EA6D220F277C836B008D2113 /* CourseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseCollectionViewCell.swift; sourceTree = "<group>"; };
+		EA6E4C51277C489A00626E93 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		EA6E4C53277C565E00626E93 /* Courses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Courses.swift; sourceTree = "<group>"; };
+		EA6E4C55277C591900626E93 /* InformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationViewController.swift; sourceTree = "<group>"; };
+		EA6E4C57277C5EC600626E93 /* AddInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddInformationViewController.swift; sourceTree = "<group>"; };
 		EA7F4D102779B0F400574DCF /* BeCoding.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeCoding.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA7F4D132779B0F400574DCF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EA7F4D152779B0F400574DCF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -86,10 +96,6 @@
 			children = (
 				EA7F4D132779B0F400574DCF /* AppDelegate.swift */,
 				EA7F4D152779B0F400574DCF /* SceneDelegate.swift */,
-				EA7F4D172779B0F400574DCF /* LandingViewController.swift */,
-				EAC11C0E277B45BD00FE981B /* RegisterPageViewController.swift */,
-				EAC11C15277B4F3100FE981B /* LoginPageViewController.swift */,
-				EAC11C17277B9F2F00FE981B /* CourseNavigationController.swift */,
 				EA7F4D1C2779B0F700574DCF /* Assets.xcassets */,
 				EA7F4D1E2779B0F700574DCF /* LaunchScreen.storyboard */,
 				EA7F4D212779B0F700574DCF /* Info.plist */,
@@ -101,6 +107,8 @@
 		EA7F4D32277AEA7800574DCF /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				EA6E4C51277C489A00626E93 /* User.swift */,
+				EA6E4C53277C565E00626E93 /* Courses.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -116,6 +124,13 @@
 		EA7F4D34277AEA9400574DCF /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				EA7F4D172779B0F400574DCF /* LandingViewController.swift */,
+				EAC11C0E277B45BD00FE981B /* RegisterPageViewController.swift */,
+				EAC11C15277B4F3100FE981B /* LoginPageViewController.swift */,
+				EAC11C17277B9F2F00FE981B /* CourseNavigationController.swift */,
+				EA6E4C55277C591900626E93 /* InformationViewController.swift */,
+				EA6E4C57277C5EC600626E93 /* AddInformationViewController.swift */,
+				EA6D220F277C836B008D2113 /* CourseCollectionViewCell.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -211,11 +226,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA6E4C54277C565E00626E93 /* Courses.swift in Sources */,
+				EA6E4C56277C591900626E93 /* InformationViewController.swift in Sources */,
+				EA6D2210277C836B008D2113 /* CourseCollectionViewCell.swift in Sources */,
 				EAC11C18277B9F2F00FE981B /* CourseNavigationController.swift in Sources */,
+				EA6E4C58277C5EC600626E93 /* AddInformationViewController.swift in Sources */,
 				EAC11C14277B47BA00FE981B /* Activity.swift in Sources */,
 				EAC11C12277B472100FE981B /* ImageView.swift in Sources */,
 				EAC11C0F277B45BD00FE981B /* RegisterPageViewController.swift in Sources */,
 				EA7F4D182779B0F400574DCF /* LandingViewController.swift in Sources */,
+				EA6E4C52277C489A00626E93 /* User.swift in Sources */,
 				EA7F4D142779B0F400574DCF /* AppDelegate.swift in Sources */,
 				EAC11C16277B4F3100FE981B /* LoginPageViewController.swift in Sources */,
 				EA7F4D162779B0F400574DCF /* SceneDelegate.swift in Sources */,
