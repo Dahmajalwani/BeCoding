@@ -65,6 +65,7 @@ class RegisterPageViewController: UIViewController {
                                 let userData: [String:String] = [
                                     "id":authResult.user.uid,
                                     "name":name,
+//                                    "title":title,
                                     "email":email,
                                     "imageUrl":url.absoluteString
                                 ]

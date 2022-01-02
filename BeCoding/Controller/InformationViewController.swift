@@ -8,8 +8,9 @@
 import UIKit
 
 class InformationViewController: UIViewController {
-    var selectedUser:User?
-    var selectedUserImage:UIImage?
+   
+    var selectedCourse:Course?
+    var selectedCourseImage:UIImage?
     
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var userTitleLabel: UILabel!
@@ -20,14 +21,14 @@ class InformationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let selectedUser = selectedUser,
-        let selectedUserImage = selectedUserImage{
-            userImageView.image = selectedUserImage
-            userTitleLabel.text = selectedUser.title
-            userDescriptionLabel.text = selectedUser.description
-            userLangugeLabel.text = selectedUser.languages
-            userInstructionLabel.text = selectedUser.instruction
-            userDataAddLabel.text = selectedUser.dataAdd
+        if let selectedCourse = selectedCourse,
+        let selectedCourseImage = selectedCourseImage{
+            userImageView.image = selectedCourseImage
+            userTitleLabel.text = selectedCourse.name
+            userDescriptionLabel.text = selectedCourse.description
+//            userLangugeLabel.text = selectedCourse.languages
+//            userInstructionLabel.text = selectedCourse.instruction
+//            userDataAddLabel.text = selectedCourse.dataAdd
           
         }
     }

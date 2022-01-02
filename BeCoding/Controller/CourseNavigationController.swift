@@ -7,94 +7,87 @@
 
 import UIKit
 import Firebase
-class CourseViewController: UIViewController{
-//                                UICollectionViewDelegate, UICollectionViewDataSource {
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        <#code#>
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        <#code#>
-//    }
+class CourseViewController: UIViewController {
+    var course = [Course] ()
+    var selectedCourse:Course?
+    var selectedCourseImage:UIImage?
     
-    
-//    @IBOutlet weak var courseCollectionView: UICollectionView! {
-//        didSet {
-////            courseCollectionView.delegate = self
-////            courseCollectionView.dataSource = self
-//        }
-//    }
+    @IBOutlet weak var courseCollectionView: UICollectionView! {
+        didSet {
+            courseCollectionView.delegate = self
+            courseCollectionView.dataSource = self
+            courseCollectionView.backgroundColor = .systemFill
+
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-//        getUsers()
+        getUsers()
     }
-//    func getUsers() {
-//        let ref = Firestore.firestore()
-//        ref.collection("posts").order(by: "createdAt",descending: true).addSnapshotListener { snapshot, error in
-//            if let error = error {
-//                print("",error.localizedDescription)
-//            }
-//            if let snapshot = snapshot {
-//                print("",snapshot.documentChanges.count)
-//                snapshot.documentChanges.forEach { diff in
-//                    let postData = diff.document.data()
-//                    switch diff.type {
-//                    case .added :
-//
-//                        if let userId = postData["userId"] as? String {
-//                            ref.collection("users").document(userId).getDocument { userSnapshot, error in
-//                                if let error = error {
-//                                    print("ERROR",error.localizedDescription)
-//
-//                                }
-////                                if let userSnapshot = userSnapshot,
-////                                   let userData = userSnapshot.data(){
-//////                                    let user = User(dict:userData)
-////                                    let users = User(dict:postData,id:diff.document.documentID,user:user)
-////                                    self.courseCollectionView.beginUpdates()
-////                                    if snapshot.documentChanges.count != 1 {
-////                                        self.users.append(user)
-////
-////                                        self.courseCollectionView.insertRows(at: [IndexPath(row:self.users.count - 1,section: 0)],with: .automatic)
-////                                    }else {
-////                                        self.users.insert(user,at:0)
-////
-////                                        self.courseCollectionView.insertRows(at: [IndexPath(row: 0,section: 0)],with: .automatic)
-////                                    }
-////
-////                                    self.courseCollectionView.endUpdates()
-////                                }
-//                            }
-//                        }
-//                    case .modified:
-//                        let postId = diff.document.documentID
-//                        if let currentPost = self.users.first(where: {$0.id == postId}),
-//                           let updateIndex = self.users.firstIndex(where: {$0.id == postId}){
-////                            let newUser = User(dict:postData, id: postId, user: currentPost.user)
-////                            self.users[updateIndex] = newUser
-////
-////                                self.courseCollectionView.beginUpdates()
-////                                self.courseCollectionView.deleteRows(at: [IndexPath(row: updateIndex,section: 0)], with: .left)
-////                                self.courseCollectionView.insertRows(at: [IndexPath(row: updateIndex,section: 0)],with: .left)
-////                                self.courseCollectionView.endUpdates()
-////
-//                        }
-//                    case .removed:
-//                        let postId = diff.document.documentID
-//                        if let deleteIndex = self.users.firstIndex(where: {$0.id == postId}){
-//                            self.users.remove(at: deleteIndex)
-////
-////                                self.courseCollectionView.beginUpdates()
-////                                self.courseCollectionView.deleteRows(at: [IndexPath(row: deleteIndex,section: 0)], with: .automatic)
-////                                self.courseCollectionView.endUpdates()
-//
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//    }
-//
+    func getUsers() {
+        let ref = Firestore.firestore()
+        ref.collection("posts").order(by: "createdAt",descending: true).addSnapshotListener { snapshot, error in
+            if let error = error {
+                print("DB ERROR Posts",error.localizedDescription)
+            }
+            if let snapshot = snapshot {
+                print("POST CANGES:",snapshot.documentChanges.count)
+                snapshot.documentChanges.forEach { diff in
+                    let courseData = diff.document.data()
+                    switch diff.type {
+                    case .added :
+                        
+                        if let userId = courseData["userId"] as? String {
+                            ref.collection("users").document(userId).getDocument { userSnapshot, error in
+                                if let error = error {
+                                    print("ERROR user Data",error.localizedDescription)
+                                }
+                                if let userSnapshot = userSnapshot,
+                                   let userData = userSnapshot.data(){
+                                    
+                                    let user = User(dict:userData)
+                                    
+                                    let course = Course(dict:courseData,id:diff.document.documentID,user:user)
+                                
+                                    if snapshot.documentChanges.count != 1 {
+                                        self.course.append(course)
+                                        self.courseCollectionView.insertItems(at: [IndexPath(item: self.course.count - 1, section: 0)])
+                                  }else {
+                                      self.course.insert(course,at:0)
+                                      self.courseCollectionView.insertItems(at: [IndexPath(item: 0, section: 0)])
+                                      print("&&&&&")
+                                      print(course)
+                                        }
+//                                    self.courseCollectionView.reloadData()
+                            }
+                                }
+                            }
+                    case .modified:
+                        let postId = diff.document.documentID
+                        if let currentPost = self.course.first(where: {$0.id == postId}),
+                         let updateIndex = self.course.firstIndex(where: {$0.id == postId}){
+                            let newPost = Course(dict: courseData, id: postId, user: currentPost.user)
+                            self.course[updateIndex] = newPost
+//                            self.courseCollectionView.beginUpdates()
+                            self.courseCollectionView.deleteItems(at: [IndexPath(item: updateIndex, section: 0)])
+                            
+                            self.courseCollectionView.insertItems(at: [IndexPath(item: updateIndex, section: 0)])
+//                            self.courseCollectionView.endUpdates()
+                    }
+                    case .removed:
+                        let postId = diff.document.documentID
+                        if let deleteIndex = self.course.firstIndex(where: {$0.id == postId}){
+                            self.course.remove(at: deleteIndex)
+//                                self.courseCollectionView.beginUpdates()
+                            self.courseCollectionView.deleteItems(at: [IndexPath(item: deleteIndex, section: 0)])
+//                            self.courseCollectionView.endUpdates()
+                        
+                        }
+            }
+        }
+    }
+        }
+            }
     @IBAction func backButton(_ sender: Any) {
         do {
             try Auth.auth().signOut()
@@ -105,24 +98,70 @@ class CourseViewController: UIViewController{
         } catch  {
             print("ERROR in signout",error.localizedDescription)
         }
-
     }
-//
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if let identifier = segue.identifier {
-//            if identifier == "toPostVC" {
-//                let vc = segue.destination as! InformationViewController
-//                vc.selectedUser = selectedUser
-//                vc.selectedUserImage = selectedUserImage
-//            }else {
-//                let vc = segue.destination as! AddInformationViewController
-//                vc.selectedUser = selectedUser
-//                vc.selectedUserImage = selectedUserImage
-//            }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let identifier = segue.identifier {
+            if identifier == "toAddCV" {
+                let vc = segue.destination as! AddInformationViewController
+                vc.selectedCourse = selectedCourse
+                vc.selectedCourseImage = selectedCourseImage
+            }else if identifier == "toInfoVC"{
+                let vc = segue.destination as! InformationViewController
+                vc.selectedCourse = selectedCourse
+                vc.selectedCourseImage = selectedCourseImage
+            }
+        }
+    }
+}
+extension CourseViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        print("*****data print******",course)
+        return course.count
+     
+    }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "courseCell", for: indexPath) as! CourseCollectionViewCell
+        cell.backgroundColor = .systemGreen
+        print("&&&&&&&^DATA^&&&&&&&", course[indexPath.row])
+    return cell.configure(with: course[indexPath.row])
+       
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath) as! CourseCollectionViewCell
+        selectedCourseImage = cell.imageCollectionCell.image
+        selectedCourse = course[indexPath.row]
+        if let currentUser = Auth.auth().currentUser,currentUser.uid == course[indexPath.row].user.id{
+                    performSegue(withIdentifier: "toAddCV", sender: self)
+                }else {
+                   performSegue(withIdentifier: "toInfoVC", sender: self)
+                }
+    }
+    
+}
+//extension CourseViewController: UICollectionViewDelegate {
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionView, sizeForItemAT indexPath: IndexPath) -> CGSize {
+//        return CGSize(width: self.view.frame.width * 0.495, height: self.view.frame.width * 0.45)
+//    }
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionView, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+//        return 0.1
+//    }
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionView, insetForSrctionAt section: Int) -> UIEdgeInsets{
+//        return UIEdgeInsets(top: 1, left: 2, bottom: 1, right: 2)
+//    }
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        let cell = collectionView.cellForItem(at: indexPath) as! CourseCollectionViewCell
+//        selectedCourseImage = cell.imageCollectionCell.image
+//        selectedCourse = course[indexPath.row]
+//        if let currentUser = Auth.auth().currentUser,
+//           currentUser.uid == course[indexPath.row].user.id{
+//            performSegue(withIdentifier: "toAddCV", sender: self)
+//        }else {
+//            performSegue(withIdentifier: "toInfoVC", sender: self)
 //        }
-//
 //    }
 //}
 
+
  
-}
+

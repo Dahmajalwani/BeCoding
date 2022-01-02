@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		EA6D2210277C836B008D2113 /* CourseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6D220F277C836B008D2113 /* CourseCollectionViewCell.swift */; };
 		EA6E4C52277C489A00626E93 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6E4C51277C489A00626E93 /* User.swift */; };
-		EA6E4C54277C565E00626E93 /* Courses.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6E4C53277C565E00626E93 /* Courses.swift */; };
+		EA6E4C54277C565E00626E93 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6E4C53277C565E00626E93 /* Course.swift */; };
 		EA6E4C56277C591900626E93 /* InformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6E4C55277C591900626E93 /* InformationViewController.swift */; };
 		EA6E4C58277C5EC600626E93 /* AddInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6E4C57277C5EC600626E93 /* AddInformationViewController.swift */; };
 		EA7F4D142779B0F400574DCF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7F4D132779B0F400574DCF /* AppDelegate.swift */; };
@@ -34,7 +34,7 @@
 /* Begin PBXFileReference section */
 		EA6D220F277C836B008D2113 /* CourseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseCollectionViewCell.swift; sourceTree = "<group>"; };
 		EA6E4C51277C489A00626E93 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		EA6E4C53277C565E00626E93 /* Courses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Courses.swift; sourceTree = "<group>"; };
+		EA6E4C53277C565E00626E93 /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
 		EA6E4C55277C591900626E93 /* InformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationViewController.swift; sourceTree = "<group>"; };
 		EA6E4C57277C5EC600626E93 /* AddInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddInformationViewController.swift; sourceTree = "<group>"; };
 		EA7F4D102779B0F400574DCF /* BeCoding.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeCoding.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -108,7 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				EA6E4C51277C489A00626E93 /* User.swift */,
-				EA6E4C53277C565E00626E93 /* Courses.swift */,
+				EA6E4C53277C565E00626E93 /* Course.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -117,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				EA7F4D192779B0F400574DCF /* Main.storyboard */,
+				EA6D220F277C836B008D2113 /* CourseCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -130,7 +131,6 @@
 				EAC11C17277B9F2F00FE981B /* CourseNavigationController.swift */,
 				EA6E4C55277C591900626E93 /* InformationViewController.swift */,
 				EA6E4C57277C5EC600626E93 /* AddInformationViewController.swift */,
-				EA6D220F277C836B008D2113 /* CourseCollectionViewCell.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -226,7 +226,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA6E4C54277C565E00626E93 /* Courses.swift in Sources */,
+				EA6E4C54277C565E00626E93 /* Course.swift in Sources */,
 				EA6E4C56277C591900626E93 /* InformationViewController.swift in Sources */,
 				EA6D2210277C836B008D2113 /* CourseCollectionViewCell.swift in Sources */,
 				EAC11C18277B9F2F00FE981B /* CourseNavigationController.swift in Sources */,

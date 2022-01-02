@@ -8,8 +8,9 @@
 import UIKit
 import Firebase
 class AddInformationViewController: UIViewController {
-    var selectedUser:User?
-    var selectedUserImage:UIImage?
+    var selectedCourse:Course?
+    var selectedCourseImage:UIImage?
+    
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var userImageView: UIImageView!{
         didSet {
@@ -28,11 +29,11 @@ class AddInformationViewController: UIViewController {
     let activityIndicator = UIActivityIndicatorView()
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let selectedUser = selectedUser,
-        let selectedUserImage = selectedUserImage{
-            userTitleTextField.text = selectedUser.title
-            userDescriptionTextField.text = selectedUser.description
-            userImageView.image = selectedUserImage
+        if let selectedCourse = selectedCourse,
+        let selectedCourseImage = selectedCourseImage{
+            userTitleTextField.text = selectedCourse.name
+            userDescriptionTextField.text = selectedCourse.description
+            userImageView.image = selectedCourseImage
             addButton.setTitle("Update Post", for: .normal)
             let deleteBarButton = UIBarButtonItem(image: UIImage(systemName: "trash.fill"), style: .plain, target: self, action: #selector(handleDelete))
             self.navigationItem.rightBarButtonItem = deleteBarButton
@@ -45,14 +46,14 @@ class AddInformationViewController: UIViewController {
     }
     @objc func handleDelete (_ sender: UIBarButtonItem) {
         let ref = Firestore.firestore().collection("posts")
-        if let selectedUser = selectedUser {
+        if let selectedCourse = selectedCourse {
             Activity.showIndicator(parentView: self.view, childView: activityIndicator)
-            ref.document(selectedUser.id).delete { error in
+            ref.document(selectedCourse.id).delete { error in
                 if let error = error {
                     print("Error in db delete",error)
                 }else {
                     // Create a reference to the file to delete
-                    let storageRef = Storage.storage().reference(withPath: "posts/\(selectedUser.id)")
+                    let storageRef = Storage.storage().reference(withPath: "posts/\(selectedCourse.id)")
                     // Delete the file
                     storageRef.delete { error in
                         if let error = error {
@@ -67,17 +68,19 @@ class AddInformationViewController: UIViewController {
             }
         }
     }
-    @IBAction func handleActionTouch(_ sender: Any) {
+    @IBAction func addButtonTouch(_ sender: Any) {
         if let image = userImageView.image,
            let imageData = image.jpegData(compressionQuality: 0.75),
            let title = userTitleTextField.text,
            let description = userDescriptionTextField.text,
+           let id = userDescriptionTextField.text,
+           let name = userDescriptionTextField.text,
            let currentUser = Auth.auth().currentUser {
             Activity.showIndicator(parentView: self.view, childView: activityIndicator)
 //            ref.addDocument(data:)
             var postId = ""
-            if let selectedUser = selectedUser {
-                postId = selectedUser.id
+            if let selectedCourse = selectedCourse {
+                postId = selectedCourse.id
             }else {
                 postId = "\(Firebase.UUID())"
             }
@@ -93,24 +96,30 @@ class AddInformationViewController: UIViewController {
                     if let url = url {
                         let db = Firestore.firestore()
                         let ref = db.collection("posts")
-                        if let selectedUser = self.selectedUser {
+                        if let selectedCourse = self.selectedCourse {
                             postData = [
-//                                "userId":selectedUser.user.id,
+                  "userId":selectedCourse.user.id,
+                               // "userId":id,
                                 "title":title,
                                 "description":description,
                                 "imageUrl":url.absoluteString,
-                                "createdAt":selectedUser.createdAt ?? FieldValue.serverTimestamp(),
+                                "name":name,
+                                "createdAt":selectedCourse.createdAt ?? FieldValue.serverTimestamp(),
                                 "updatedAt": FieldValue.serverTimestamp()
                             ]
+                            print("******")
                         }else {
                             postData = [
+                                
                                 "userId":currentUser.uid,
                                 "title":title,
+                                "name":name,
                                 "description":description,
                                 "imageUrl":url.absoluteString,
                                 "createdAt":FieldValue.serverTimestamp(),
                                 "updatedAt": FieldValue.serverTimestamp()
                             ]
+                            print("((((((")
                         }
                         ref.document(postId).setData(postData) { error in
                             if let error = error {
