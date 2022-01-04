@@ -16,7 +16,7 @@ class CourseViewController: UIViewController {
         didSet {
             courseCollectionView.delegate = self
             courseCollectionView.dataSource = self
-            courseCollectionView.backgroundColor = .systemFill
+            courseCollectionView.backgroundColor = .systemBackground
 
         }
     }
@@ -35,20 +35,18 @@ class CourseViewController: UIViewController {
                 snapshot.documentChanges.forEach { diff in
                     let courseData = diff.document.data()
                     switch diff.type {
+//                        to add info
                     case .added :
-                        
                         if let userId = courseData["userId"] as? String {
+                            print("UserId !!!!!!!!!!!!!!! ",userId)
                             ref.collection("users").document(userId).getDocument { userSnapshot, error in
                                 if let error = error {
                                     print("ERROR user Data",error.localizedDescription)
                                 }
                                 if let userSnapshot = userSnapshot,
                                    let userData = userSnapshot.data(){
-                                    
                                     let user = User(dict:userData)
-                                    
                                     let course = Course(dict:courseData,id:diff.document.documentID,user:user)
-                                
                                     if snapshot.documentChanges.count != 1 {
                                         self.course.append(course)
                                         self.courseCollectionView.insertItems(at: [IndexPath(item: self.course.count - 1, section: 0)])
@@ -62,6 +60,8 @@ class CourseViewController: UIViewController {
                             }
                                 }
                             }
+                        print("?????????")
+//                        to update
                     case .modified:
                         let postId = diff.document.documentID
                         if let currentPost = self.course.first(where: {$0.id == postId}),
@@ -74,6 +74,7 @@ class CourseViewController: UIViewController {
                             self.courseCollectionView.insertItems(at: [IndexPath(item: updateIndex, section: 0)])
 //                            self.courseCollectionView.endUpdates()
                     }
+//                        to remove
                     case .removed:
                         let postId = diff.document.documentID
                         if let deleteIndex = self.course.firstIndex(where: {$0.id == postId}){
@@ -101,11 +102,11 @@ class CourseViewController: UIViewController {
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let identifier = segue.identifier {
-            if identifier == "toAddCV" {
+            if identifier == "toAddVC" {
                 let vc = segue.destination as! AddInformationViewController
                 vc.selectedCourse = selectedCourse
                 vc.selectedCourseImage = selectedCourseImage
-            }else if identifier == "toInfoVC"{
+            }else if identifier == "toInfoVC" {
                 let vc = segue.destination as! InformationViewController
                 vc.selectedCourse = selectedCourse
                 vc.selectedCourseImage = selectedCourseImage
@@ -117,28 +118,25 @@ extension CourseViewController: UICollectionViewDataSource, UICollectionViewDele
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         print("*****data print******",course)
         return course.count
-     
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "courseCell", for: indexPath) as! CourseCollectionViewCell
-        cell.backgroundColor = .systemGreen
+        cell.backgroundColor = .systemBackground
         print("&&&&&&&^DATA^&&&&&&&", course[indexPath.row])
     return cell.configure(with: course[indexPath.row])
-       
     }
-    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath) as! CourseCollectionViewCell
-        selectedCourseImage = cell.imageCollectionCell.image
-        selectedCourse = course[indexPath.row]
+             let cell = collectionView.cellForItem(at: indexPath) as! CourseCollectionViewCell
+             selectedCourseImage = cell.imageCollectionCell.image
+             selectedCourse = course[indexPath.row]
         if let currentUser = Auth.auth().currentUser,currentUser.uid == course[indexPath.row].user.id{
-                    performSegue(withIdentifier: "toAddCV", sender: self)
-                }else {
-                   performSegue(withIdentifier: "toInfoVC", sender: self)
-                }
-    }
-    
-}
+                         performSegue(withIdentifier: "toAddVC", sender: self)
+                     }else {
+                        performSegue(withIdentifier: "toInfoVC", sender: self)
+                     }
+         }
+
+     }
 //extension CourseViewController: UICollectionViewDelegate {
 //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionView, sizeForItemAT indexPath: IndexPath) -> CGSize {
 //        return CGSize(width: self.view.frame.width * 0.495, height: self.view.frame.width * 0.45)
@@ -161,7 +159,7 @@ extension CourseViewController: UICollectionViewDataSource, UICollectionViewDele
 //        }
 //    }
 //}
-
+//
 
  
 

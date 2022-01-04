@@ -15,8 +15,8 @@ class RegisterPageViewController: UIViewController {
     @IBOutlet weak var userImageView: UIImageView! {
         didSet {
             userImageView.layer.borderColor = UIColor.systemGreen.cgColor
-            userImageView.layer.borderWidth = 4.0
-            userImageView.layer.cornerRadius = userImageView.bounds.height / 2
+            userImageView.layer.borderWidth = 1.0
+            userImageView.layer.cornerRadius = userImageView.frame.size.height / 2
             userImageView.layer.masksToBounds = true
             userImageView.isUserInteractionEnabled = true
             let tabGesture = UITapGestureRecognizer(target: self, action: #selector(selectImage))

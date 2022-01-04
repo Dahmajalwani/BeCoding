@@ -17,7 +17,7 @@ class CourseCollectionViewCell: UICollectionViewCell {
     
     
     func configure(with courses:Course) -> UICollectionViewCell {
-        nameLabelCollectionCell.text = courses.name
+        nameLabelCollectionCell.text = courses.title
         descriptionLabelCollectionCell.text = courses.description
         userImageView.loadImageUsingCache(with: courses.user.imageUrl)
         imageCollectionCell.loadImageUsingCache(with: courses.imageUrl)

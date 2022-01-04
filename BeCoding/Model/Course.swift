@@ -11,9 +11,11 @@ struct Course {
     var id = ""
     var title = ""
     var imageUrl = ""
-    var name = ""
+    //var name = ""
     var description = ""
-    var userId = ""
+    var language = ""
+//    var userId = ""
+    var instruction = ""
     var user:User
     var createdAt:Timestamp?
     
@@ -21,13 +23,17 @@ struct Course {
         
         if let imageUrl = dict["imageUrl"] as? String,
            let title = dict["title"] as? String,
-           let name = dict["name"] as? String,
+//           let userId = dict["userId"] as? String,
+           let language = dict["language"] as? String,
            let description = dict["description"] as? String,
+           let instruction = dict["instruction"] as? String,
            let createdAt = dict["createdAt"] as? Timestamp{
             self.title = title
-            self.name = name
-            self.description = description
             self.imageUrl = imageUrl
+//            self.userId = name
+            self.description = description
+            self.language = language
+            self.instruction = instruction
             self.createdAt = createdAt
         }
         self.id = id

@@ -14,6 +14,15 @@ class AddInformationViewController: UIViewController {
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var userImageView: UIImageView!{
         didSet {
+          
+                    userImageView.layer.borderColor = UIColor.systemGreen.cgColor
+                    userImageView.layer.borderWidth = 4.0
+                    userImageView.layer.cornerRadius = userImageView.bounds.height / 2
+                    userImageView.layer.masksToBounds = true
+                    userImageView.isUserInteractionEnabled = true
+            let tabGesture = UITapGestureRecognizer(target: self, action: #selector(chooseImage))
+                    userImageView.addGestureRecognizer(tabGesture)
+            
             userImageView.isUserInteractionEnabled = true
             let tapGesture = UITapGestureRecognizer(target: self, action: #selector(chooseImage))
             userImageView.addGestureRecognizer(tapGesture)
@@ -23,7 +32,7 @@ class AddInformationViewController: UIViewController {
     @IBOutlet weak var userDescriptionTextField: UITextField!
     @IBOutlet weak var userLangugesTextField: UITextField!
     @IBOutlet weak var userinstructionTextField: UITextField!
-    @IBOutlet weak var userDataAddTextField: UITextField!
+  
     
     
     let activityIndicator = UIActivityIndicatorView()
@@ -31,7 +40,7 @@ class AddInformationViewController: UIViewController {
         super.viewDidLoad()
         if let selectedCourse = selectedCourse,
         let selectedCourseImage = selectedCourseImage{
-            userTitleTextField.text = selectedCourse.name
+            userTitleTextField.text = selectedCourse.title
             userDescriptionTextField.text = selectedCourse.description
             userImageView.image = selectedCourseImage
             addButton.setTitle("Update Post", for: .normal)
@@ -53,7 +62,7 @@ class AddInformationViewController: UIViewController {
                     print("Error in db delete",error)
                 }else {
                     // Create a reference to the file to delete
-                    let storageRef = Storage.storage().reference(withPath: "posts/\(selectedCourse.id)")
+                    let storageRef = Storage.storage().reference(withPath: "posts/\(selectedCourse.user.id)/\(selectedCourse.id)")
                     // Delete the file
                     storageRef.delete { error in
                         if let error = error {
@@ -73,14 +82,16 @@ class AddInformationViewController: UIViewController {
            let imageData = image.jpegData(compressionQuality: 0.75),
            let title = userTitleTextField.text,
            let description = userDescriptionTextField.text,
-           let id = userDescriptionTextField.text,
-           let name = userDescriptionTextField.text,
+         // let id = userDescriptionTextField.text,
+          // let name = userDescriptionTextField.text,
+           let instruction = userinstructionTextField.text,
+           let language = userLangugesTextField.text,
            let currentUser = Auth.auth().currentUser {
             Activity.showIndicator(parentView: self.view, childView: activityIndicator)
 //            ref.addDocument(data:)
             var postId = ""
             if let selectedCourse = selectedCourse {
-                postId = selectedCourse.id
+                postId = selectedCourse.user.id
             }else {
                 postId = "\(Firebase.UUID())"
             }
@@ -98,24 +109,27 @@ class AddInformationViewController: UIViewController {
                         let ref = db.collection("posts")
                         if let selectedCourse = self.selectedCourse {
                             postData = [
-                  "userId":selectedCourse.user.id,
-                               // "userId":id,
+                            "userId":selectedCourse.user.id,
+//                                "userId":id,
                                 "title":title,
+                                //"name":name,
                                 "description":description,
                                 "imageUrl":url.absoluteString,
-                                "name":name,
+                                "instruction": instruction,
+                                "language": language,
                                 "createdAt":selectedCourse.createdAt ?? FieldValue.serverTimestamp(),
                                 "updatedAt": FieldValue.serverTimestamp()
                             ]
                             print("******")
                         }else {
                             postData = [
-                                
                                 "userId":currentUser.uid,
                                 "title":title,
-                                "name":name,
+                              //  "name":name,
                                 "description":description,
                                 "imageUrl":url.absoluteString,
+                                "instruction": instruction,
+                                "language": language,
                                 "createdAt":FieldValue.serverTimestamp(),
                                 "updatedAt": FieldValue.serverTimestamp()
                             ]

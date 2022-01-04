@@ -17,19 +17,17 @@ class InformationViewController: UIViewController {
     @IBOutlet weak var userDescriptionLabel: UILabel!
     @IBOutlet weak var userLangugeLabel: UILabel!
     @IBOutlet weak var userInstructionLabel: UILabel!
-    @IBOutlet weak var userDataAddLabel: UILabel!
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
         if let selectedCourse = selectedCourse,
         let selectedCourseImage = selectedCourseImage{
             userImageView.image = selectedCourseImage
-            userTitleLabel.text = selectedCourse.name
+            userTitleLabel.text = selectedCourse.title
             userDescriptionLabel.text = selectedCourse.description
-//            userLangugeLabel.text = selectedCourse.languages
-//            userInstructionLabel.text = selectedCourse.instruction
-//            userDataAddLabel.text = selectedCourse.dataAdd
-          
+            userLangugeLabel.text = selectedCourse.language
+            userInstructionLabel.text = selectedCourse.instruction
         }
     }
 }
