@@ -10,6 +10,43 @@ import UIKit
 import Firebase
 class RegisterPageViewController: UIViewController {
     
+    @IBOutlet weak var signUpLable: UILabel!
+    {
+        didSet {
+            signUpLable.text = "SignUp".localized
+        }
+    }
+    @IBOutlet weak var nameLabel: UILabel!
+    {
+        didSet {
+            nameLabel.text = "Name".localized
+        }
+    }
+    @IBOutlet weak var emailLabel: UILabel!
+    {
+        didSet {
+            emailLabel.text = "Email".localized
+        }
+    }
+    @IBOutlet weak var passwordLabel: UILabel!
+    {
+        didSet {
+            passwordLabel.text = "Password".localized
+        }
+    }
+    @IBOutlet weak var passwordConfLabel: UILabel!
+    {
+        didSet {
+            passwordConfLabel.text = "PasswordCon".localized
+        }
+    }
+    
+    @IBOutlet weak var continueButtonOutlit: UIButton!
+    {
+        didSet {
+            continueButtonOutlit.setTitle(NSLocalizedString("Continue", tableName: "Localizable", comment: ""),for: .normal)
+        }
+    }
     let imagePickerController = UIImagePickerController()
     var activityIndicator = UIActivityIndicatorView()
     @IBOutlet weak var userImageView: UIImageView! {
@@ -26,15 +63,23 @@ class RegisterPageViewController: UIViewController {
     @IBOutlet weak var nameTextField: UITextField!
     
     @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField! {
+        didSet{
+            passwordTextField.isSecureTextEntry = true
+        }
+    }
     
-    @IBOutlet weak var confirmPasswordTextField: UITextField!
+    @IBOutlet weak var confirmPasswordTextField: UITextField! {
+        didSet{
+            confirmPasswordTextField.isSecureTextEntry = true
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         imagePickerController.delegate = self
     }
+    
     @IBAction func registerButtonToContinue(_ sender: Any) {
-        
         if let image = userImageView.image,
            let imageData = image.jpegData(compressionQuality: 0.75),
            let name = nameTextField.text,

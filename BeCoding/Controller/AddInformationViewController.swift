@@ -11,12 +11,36 @@ class AddInformationViewController: UIViewController {
     var selectedCourse:Course?
     var selectedCourseImage:UIImage?
     
+    @IBOutlet weak var titleLabel: UILabel!
+    {
+        didSet {
+            titleLabel.text = "title".localized
+        }
+    }
+    @IBOutlet weak var descriptionLabel: UILabel!
+    {
+        didSet {
+            descriptionLabel.text = "description".localized
+        }
+    }
+    @IBOutlet weak var languageLabel: UILabel!
+    {
+        didSet {
+            languageLabel.text = "language".localized
+        }
+    }
+    @IBOutlet weak var instructionLabel: UILabel!
+    {
+        didSet {
+            instructionLabel.text = "instruction".localized
+        }
+    }
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var userImageView: UIImageView!{
         didSet {
           
                     userImageView.layer.borderColor = UIColor.systemGreen.cgColor
-                    userImageView.layer.borderWidth = 4.0
+            userImageView.layer.borderWidth = 1.0
                     userImageView.layer.cornerRadius = userImageView.bounds.height / 2
                     userImageView.layer.masksToBounds = true
                     userImageView.isUserInteractionEnabled = true
@@ -42,6 +66,8 @@ class AddInformationViewController: UIViewController {
         let selectedCourseImage = selectedCourseImage{
             userTitleTextField.text = selectedCourse.title
             userDescriptionTextField.text = selectedCourse.description
+            userLangugesTextField.text = selectedCourse.language
+            userinstructionTextField.text = selectedCourse.instruction
             userImageView.image = selectedCourseImage
             addButton.setTitle("Update Post", for: .normal)
             let deleteBarButton = UIBarButtonItem(image: UIImage(systemName: "trash.fill"), style: .plain, target: self, action: #selector(handleDelete))
@@ -57,7 +83,7 @@ class AddInformationViewController: UIViewController {
         let ref = Firestore.firestore().collection("posts")
         if let selectedCourse = selectedCourse {
             Activity.showIndicator(parentView: self.view, childView: activityIndicator)
-            ref.document(selectedCourse.id).delete { error in
+            ref.document(selectedCourse  .id).delete { error in
                 if let error = error {
                     print("Error in db delete",error)
                 }else {

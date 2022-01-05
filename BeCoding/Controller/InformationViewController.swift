@@ -12,6 +12,31 @@ class InformationViewController: UIViewController {
     var selectedCourse:Course?
     var selectedCourseImage:UIImage?
     
+    @IBOutlet weak var titleLabell: UILabel!
+    {
+        didSet {
+            titleLabell.text = "title".localized
+        }
+    }
+    @IBOutlet weak var descriptionLabell: UILabel!
+    {
+        didSet {
+            descriptionLabell.text = "description".localized
+        }
+    }
+    @IBOutlet weak var languageLabell: UILabel!
+    {
+        didSet {
+            languageLabell.text = "language".localized
+        }
+    }
+    @IBOutlet weak var instructionLabell: UILabel!
+    {
+        didSet {
+            instructionLabell.text = "instruction".localized
+        }
+    }
+    
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var userTitleLabel: UILabel!
     @IBOutlet weak var userDescriptionLabel: UILabel!

@@ -9,8 +9,44 @@ import UIKit
 import Firebase
 class LoginPageViewController: UIViewController {
     var activityIndicator = UIActivityIndicatorView()
+    
+    @IBOutlet weak var signInLabel: UILabel!
+    {
+        didSet {
+            signInLabel.text = "SignIn".localized
+        }
+    }
+    @IBOutlet weak var welcomLabel: UILabel!
+    {
+        didSet {
+            welcomLabel.text = "welcome".localized
+        }
+    }
+    @IBOutlet weak var emailLabelSignin: UILabel!
+    {
+        didSet {
+            emailLabelSignin.text = "Email".localized
+        }
+    }
+    @IBOutlet weak var passwordLabel: UILabel!
+    {
+        didSet {
+            passwordLabel.text = "Password".localized
+        }
+    }
+    @IBOutlet weak var signInButton: UIButton!
+    {
+        didSet {
+            signInButton.setTitle(NSLocalizedString("SignIn", tableName: "Localizable", comment: ""),for: .normal)
+        }
+    }
+    
     @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField! {
+        didSet{
+            passwordTextField.isSecureTextEntry = true
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
     }

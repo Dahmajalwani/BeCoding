@@ -12,8 +12,24 @@ class CourseCollectionViewCell: UICollectionViewCell {
  
     @IBOutlet weak var imageCollectionCell: UIImageView!
     @IBOutlet weak var descriptionLabelCollectionCell: UILabel!
-    @IBOutlet weak var userImageView: UIImageView!
-    @IBOutlet weak var nameLabelCollectionCell: UILabel!
+    @IBOutlet weak var userImageView: UIImageView!  {
+        didSet {
+            userImageView.layer.borderColor = UIColor.systemGreen.cgColor
+            userImageView.layer.borderWidth = 1.0
+            userImageView.layer.cornerRadius = userImageView.frame.size.height / 2
+            userImageView.layer.masksToBounds = true
+            userImageView.isUserInteractionEnabled = true
+//            let tabGesture = UITapGestureRecognizer(target: self, action: #selector(selectImage))
+//            userImageView.addGestureRecognizer(tabGesture)
+        }
+    }
+    
+    @IBOutlet weak var nameLabelCollectionCell: UILabel! {
+        didSet{
+            nameLabelCollectionCell.layer.masksToBounds = true
+            nameLabelCollectionCell.layer.cornerRadius = 20
+        }
+    }
     
     
     func configure(with courses:Course) -> UICollectionViewCell {
