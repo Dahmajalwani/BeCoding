@@ -76,10 +76,12 @@ class RegisterPageViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "backButton".localized, style: .plain, target: nil, action: nil)
         imagePickerController.delegate = self
     }
     
     @IBAction func registerButtonToContinue(_ sender: Any) {
+        
         if let image = userImageView.image,
            let imageData = image.jpegData(compressionQuality: 0.75),
            let name = nameTextField.text,
@@ -131,12 +133,17 @@ class RegisterPageViewController: UIViewController {
                 }
             }
         }
+//        else {
+//            let alert = UIAlertController(title: "ERROR", message: "please Enter name, email,password in the correct format", preferredStyle: .alert)
+//            let dismissAction = UIAlertAction(title: "ok", style: .default) { Action in
+//                self.dismiss(animated: true, completion: nil)
+//            }
         
     }
     
     
 }
-
+//}
 extension RegisterPageViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
     @objc func selectImage() {
@@ -158,6 +165,7 @@ extension RegisterPageViewController: UIImagePickerControllerDelegate, UINavigat
         alert.addAction(galaryAction)
         alert.addAction(dismissAction)
         self.present(alert, animated: true, completion: nil)
+        
     }
     func getImage( from sourceType: UIImagePickerController.SourceType) {
         

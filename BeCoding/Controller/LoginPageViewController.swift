@@ -49,6 +49,7 @@ class LoginPageViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "backButton".localized, style: .plain, target: nil, action: nil)
     }
     @IBAction func signButton(_ sender: Any) {
         if let email = emailTextField.text,

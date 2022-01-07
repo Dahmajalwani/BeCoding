@@ -14,7 +14,7 @@ class CourseCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var descriptionLabelCollectionCell: UILabel!
     @IBOutlet weak var userImageView: UIImageView!  {
         didSet {
-            userImageView.layer.borderColor = UIColor.systemGreen.cgColor
+            userImageView.layer.borderColor = UIColor.systemBackground.cgColor
             userImageView.layer.borderWidth = 1.0
             userImageView.layer.cornerRadius = userImageView.frame.size.height / 2
             userImageView.layer.masksToBounds = true

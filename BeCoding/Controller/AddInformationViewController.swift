@@ -62,6 +62,8 @@ class AddInformationViewController: UIViewController {
     let activityIndicator = UIActivityIndicatorView()
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "backButton".localized, style: .plain, target: nil, action: nil)
+        
         if let selectedCourse = selectedCourse,
         let selectedCourseImage = selectedCourseImage{
             userTitleTextField.text = selectedCourse.title

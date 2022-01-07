@@ -17,11 +17,12 @@ class CourseViewController: UIViewController {
             courseCollectionView.delegate = self
             courseCollectionView.dataSource = self
             courseCollectionView.backgroundColor = .systemBackground
-
+            
         }
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "backButton".localized, style: .plain, target: nil, action: nil)
         getUsers()
     }
     func getUsers() {
@@ -35,7 +36,7 @@ class CourseViewController: UIViewController {
                 snapshot.documentChanges.forEach { diff in
                     let courseData = diff.document.data()
                     switch diff.type {
-//                        to add info
+                        //                        to add info
                     case .added :
                         if let userId = courseData["userId"] as? String {
                             print("UserId !!!!!!!!!!!!!!! ",userId)
@@ -50,45 +51,36 @@ class CourseViewController: UIViewController {
                                     if snapshot.documentChanges.count != 1 {
                                         self.course.append(course)
                                         self.courseCollectionView.insertItems(at: [IndexPath(item: self.course.count - 1, section: 0)])
-                                  }else {
-                                      self.course.insert(course,at:0)
-                                      self.courseCollectionView.insertItems(at: [IndexPath(item: 0, section: 0)])
-                                      print("&&&&&")
-                                      print(course)
-                                        }
-//                                    self.courseCollectionView.reloadData()
-                            }
+                                    }else {
+                                        self.course.insert(course,at:0)
+                                        self.courseCollectionView.insertItems(at: [IndexPath(item: 0, section: 0)])
+                                        print("&&&&&")
+                                        print(course)
+                                    }
                                 }
                             }
+                        }
                         print("?????????")
-//                        to update
                     case .modified:
                         let postId = diff.document.documentID
                         if let currentPost = self.course.first(where: {$0.id == postId}),
-                         let updateIndex = self.course.firstIndex(where: {$0.id == postId}){
+                           let updateIndex = self.course.firstIndex(where: {$0.id == postId}){
                             let newPost = Course(dict: courseData, id: postId, user: currentPost.user)
                             self.course[updateIndex] = newPost
-//                            self.courseCollectionView.beginUpdates()
                             self.courseCollectionView.deleteItems(at: [IndexPath(item: updateIndex, section: 0)])
-                            
                             self.courseCollectionView.insertItems(at: [IndexPath(item: updateIndex, section: 0)])
-//                            self.courseCollectionView.endUpdates()
-                    }
-//                        to remove
+                        }
                     case .removed:
                         let postId = diff.document.documentID
                         if let deleteIndex = self.course.firstIndex(where: {$0.id == postId}){
                             self.course.remove(at: deleteIndex)
-//                                self.courseCollectionView.beginUpdates()
                             self.courseCollectionView.deleteItems(at: [IndexPath(item: deleteIndex, section: 0)])
-//                            self.courseCollectionView.endUpdates()
-                        
                         }
+                    }
+                }
             }
         }
     }
-        }
-            }
     @IBAction func backButton(_ sender: Any) {
         do {
             try Auth.auth().signOut()
@@ -123,43 +115,27 @@ extension CourseViewController: UICollectionViewDataSource, UICollectionViewDele
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "courseCell", for: indexPath) as! CourseCollectionViewCell
         cell.backgroundColor = .systemBackground
         print("&&&&&&&^DATA^&&&&&&&", course[indexPath.row])
-    return cell.configure(with: course[indexPath.row])
+        return cell.configure(with: course[indexPath.row])
     }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionView, sizeForItemAT indexPath: IndexPath) -> CGSize {
+        return CGSize(width: self.view.frame.width * 0.495, height: self.view.frame.width * 0.45)
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionView, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0.1
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionView, insetForSrctionAt section: Int) -> UIEdgeInsets{
+        return UIEdgeInsets(top: 1, left: 2, bottom: 1, right: 2)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-             let cell = collectionView.cellForItem(at: indexPath) as! CourseCollectionViewCell
-             selectedCourseImage = cell.imageCollectionCell.image
-             selectedCourse = course[indexPath.row]
+        let cell = collectionView.cellForItem(at: indexPath) as! CourseCollectionViewCell
+        selectedCourseImage = cell.imageCollectionCell.image
+        selectedCourse = course[indexPath.row]
         if let currentUser = Auth.auth().currentUser,currentUser.uid == course[indexPath.row].user.id{
-                         performSegue(withIdentifier: "toAddVC", sender: self)
-                     }else {
-                        performSegue(withIdentifier: "toInfoVC", sender: self)
-                     }
-         }
-
-     }
-//extension CourseViewController: UICollectionViewDelegate {
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionView, sizeForItemAT indexPath: IndexPath) -> CGSize {
-//        return CGSize(width: self.view.frame.width * 0.495, height: self.view.frame.width * 0.45)
-//    }
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionView, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-//        return 0.1
-//    }
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionView, insetForSrctionAt section: Int) -> UIEdgeInsets{
-//        return UIEdgeInsets(top: 1, left: 2, bottom: 1, right: 2)
-//    }
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        let cell = collectionView.cellForItem(at: indexPath) as! CourseCollectionViewCell
-//        selectedCourseImage = cell.imageCollectionCell.image
-//        selectedCourse = course[indexPath.row]
-//        if let currentUser = Auth.auth().currentUser,
-//           currentUser.uid == course[indexPath.row].user.id{
-//            performSegue(withIdentifier: "toAddCV", sender: self)
-//        }else {
-//            performSegue(withIdentifier: "toInfoVC", sender: self)
-//        }
-//    }
-//}
-//
-
- 
-
+            performSegue(withIdentifier: "toAddVC", sender: self)
+        }else {
+            performSegue(withIdentifier: "toInfoVC", sender: self)
+        }
+    }
+    
+}

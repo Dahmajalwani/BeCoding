@@ -12,6 +12,7 @@
 		EA6E4C54277C565E00626E93 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6E4C53277C565E00626E93 /* Course.swift */; };
 		EA6E4C56277C591900626E93 /* InformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6E4C55277C591900626E93 /* InformationViewController.swift */; };
 		EA6E4C58277C5EC600626E93 /* AddInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6E4C57277C5EC600626E93 /* AddInformationViewController.swift */; };
+		EA7C026627870A8A00D3C3AB /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7C026527870A8A00D3C3AB /* ProfileViewController.swift */; };
 		EA7C2A1E2782DA7100ED1310 /* BundleExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7C2A1D2782DA7100ED1310 /* BundleExtention.swift */; };
 		EA7F4D142779B0F400574DCF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7F4D132779B0F400574DCF /* AppDelegate.swift */; };
 		EA7F4D162779B0F400574DCF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7F4D152779B0F400574DCF /* SceneDelegate.swift */; };
@@ -39,6 +40,7 @@
 		EA6E4C53277C565E00626E93 /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
 		EA6E4C55277C591900626E93 /* InformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationViewController.swift; sourceTree = "<group>"; };
 		EA6E4C57277C5EC600626E93 /* AddInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddInformationViewController.swift; sourceTree = "<group>"; };
+		EA7C026527870A8A00D3C3AB /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		EA7C2A192782D81600ED1310 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Main.strings; sourceTree = "<group>"; };
 		EA7C2A1A2782D81600ED1310 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		EA7C2A1C2782D9F200ED1310 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 				EAC11C17277B9F2F00FE981B /* CourseNavigationController.swift */,
 				EA6E4C55277C591900626E93 /* InformationViewController.swift */,
 				EA6E4C57277C5EC600626E93 /* AddInformationViewController.swift */,
+				EA7C026527870A8A00D3C3AB /* ProfileViewController.swift */,
 				EA7C2A1D2782DA7100ED1310 /* BundleExtention.swift */,
 			);
 			path = Controller;
@@ -250,6 +253,7 @@
 				EA7F4D182779B0F400574DCF /* LandingViewController.swift in Sources */,
 				EA6E4C52277C489A00626E93 /* User.swift in Sources */,
 				EA7F4D142779B0F400574DCF /* AppDelegate.swift in Sources */,
+				EA7C026627870A8A00D3C3AB /* ProfileViewController.swift in Sources */,
 				EAC11C16277B4F3100FE981B /* LoginPageViewController.swift in Sources */,
 				EA7F4D162779B0F400574DCF /* SceneDelegate.swift in Sources */,
 			);
