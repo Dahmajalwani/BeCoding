@@ -12,6 +12,8 @@ class CourseCollectionViewCell: UICollectionViewCell {
  
     @IBOutlet weak var imageCollectionCell: UIImageView!
     @IBOutlet weak var descriptionLabelCollectionCell: UILabel!
+    
+    @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var userImageView: UIImageView!  {
         didSet {
             userImageView.layer.borderColor = UIColor.systemBackground.cgColor
@@ -30,11 +32,10 @@ class CourseCollectionViewCell: UICollectionViewCell {
             nameLabelCollectionCell.layer.cornerRadius = 20
         }
     }
-    
-    
     func configure(with courses:Course) -> UICollectionViewCell {
         nameLabelCollectionCell.text = courses.title
         descriptionLabelCollectionCell.text = courses.description
+        emailLabel.text = courses.user.email
         userImageView.loadImageUsingCache(with: courses.user.imageUrl)
         imageCollectionCell.loadImageUsingCache(with: courses.imageUrl)
         return self

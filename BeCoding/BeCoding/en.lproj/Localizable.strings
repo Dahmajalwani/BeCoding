@@ -1,6 +1,6 @@
 
 "JoinToUsToBecomePartOfViosion2030" = "Join To Us To Become Part Of Viosion 2030";
-"RegisterAs" = "RegisterAs";
+"RegisterAs" = "Register As";
 "New" = "New";
 "Programmers/Developer" = "Programmers/Developer";
 "SignUp" = "Sign Up";
@@ -13,10 +13,16 @@
 "welcome" = "Welcome to the right place";
 "Email" = "Email";
 "Password" = "Password";
-"SignIn" = "SignIn";
-"title" = "title";
-"description" = "description";
-"language" = "language";
-"instruction" = "instruction";
+"SignIn" = "Sign In";
+"title" = "Title";
+"description" = "Description";
+"language" = "Language";
+"instruction" = "Instruction";
 "backButton" = "Back";
-
+"Chosethelangauge" = "Chose the langauge";
+"Welcome" = "Welcome";
+"yourName" = "Your Name";
+"youEmailAddress" = "you Email Address";
+"atLest6LitterOrNumber" = "at Lest 6 Litter Or Number";
+"enterPassoword" = "enter Passoword";
+"enterPassowordCon" = "enter confirm Passoword";

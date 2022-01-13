@@ -19,4 +19,11 @@
 "language" = "لغة البرمجة";
 "instruction" = "تعليمات";
 "backButton" = "رجوع";
+"Chosethelangauge" = "أختار اللغة";
+"Welcome" = "مـــرحبـــــا";
+"yourName" = "أدخل إسمك هنا";
+"youEmailAddress" = "أدخل البريد الإلكتروني";
+"atLest6LitterOrNumber" = "أدخل حروف او ارقام على الاقل ٦";
+"enterPassoword" = "أدخل كلمة السر";
+"enterPassowordCon" = "تأكيد كلمة السر";
 

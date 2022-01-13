@@ -16,7 +16,6 @@ class CourseViewController: UIViewController {
         didSet {
             courseCollectionView.delegate = self
             courseCollectionView.dataSource = self
-            courseCollectionView.backgroundColor = .systemBackground
             
         }
     }
@@ -54,13 +53,12 @@ class CourseViewController: UIViewController {
                                     }else {
                                         self.course.insert(course,at:0)
                                         self.courseCollectionView.insertItems(at: [IndexPath(item: 0, section: 0)])
-                                        print("&&&&&")
+                                       
                                         print(course)
                                     }
                                 }
                             }
                         }
-                        print("?????????")
                     case .modified:
                         let postId = diff.document.documentID
                         if let currentPost = self.course.first(where: {$0.id == postId}),
@@ -113,8 +111,12 @@ extension CourseViewController: UICollectionViewDataSource, UICollectionViewDele
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "courseCell", for: indexPath) as! CourseCollectionViewCell
-        cell.backgroundColor = .systemBackground
-        print("&&&&&&&^DATA^&&&&&&&", course[indexPath.row])
+
+        print(".", course[indexPath.row])
+        cell.layer.borderColor = UIColor.systemGray2.cgColor
+        cell.layer.borderWidth = 4.0
+        cell.layer.cornerRadius = 20
+        
         return cell.configure(with: course[indexPath.row])
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionView, sizeForItemAT indexPath: IndexPath) -> CGSize {

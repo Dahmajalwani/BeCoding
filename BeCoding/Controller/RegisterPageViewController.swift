@@ -10,6 +10,20 @@ import UIKit
 import Firebase
 class RegisterPageViewController: UIViewController {
     
+    @IBOutlet weak var viewHidder: UIView!
+    {
+        didSet{
+            viewHidder.layer.borderColor = UIColor.tertiarySystemBackground.cgColor
+            viewHidder.layer.borderWidth = 0
+            viewHidder.layer.cornerRadius = 20
+            viewHidder.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
+//            viewWelcome.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMinXMinYCorner]
+            viewHidder.layer.masksToBounds = true
+            viewHidder.isUserInteractionEnabled = true
+        }
+    }
+    
+    
     @IBOutlet weak var signUpLable: UILabel!
     {
         didSet {
@@ -51,7 +65,7 @@ class RegisterPageViewController: UIViewController {
     var activityIndicator = UIActivityIndicatorView()
     @IBOutlet weak var userImageView: UIImageView! {
         didSet {
-            userImageView.layer.borderColor = UIColor.systemGreen.cgColor
+            userImageView.layer.borderColor = UIColor.systemGray2.cgColor
             userImageView.layer.borderWidth = 1.0
             userImageView.layer.cornerRadius = userImageView.frame.size.height / 2
             userImageView.layer.masksToBounds = true
@@ -61,23 +75,36 @@ class RegisterPageViewController: UIViewController {
         }
     }
     @IBOutlet weak var nameTextField: UITextField!
+    {
+        didSet{
+            nameTextField.placeholder = "yourName".localized
+        }
+    }
     
     @IBOutlet weak var emailTextField: UITextField!
+    {
+        didSet{
+            emailTextField.placeholder = "youEmailAddress".localized
+        }
+    }
     @IBOutlet weak var passwordTextField: UITextField! {
         didSet{
             passwordTextField.isSecureTextEntry = true
+            passwordTextField.placeholder = "enterPassoword".localized
         }
     }
     
     @IBOutlet weak var confirmPasswordTextField: UITextField! {
         didSet{
             confirmPasswordTextField.isSecureTextEntry = true
+            confirmPasswordTextField.placeholder = "enterPassowordCon".localized
         }
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "backButton".localized, style: .plain, target: nil, action: nil)
         imagePickerController.delegate = self
+        view.addGestureRecognizer(UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing(_:))))
     }
     
     @IBAction func registerButtonToContinue(_ sender: Any) {
@@ -92,6 +119,8 @@ class RegisterPageViewController: UIViewController {
             Activity.showIndicator(parentView: self.view, childView: activityIndicator)
             Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
                 if let error = error {
+            Alert.showAlert(strTitle: "Error", strMessage: error.localizedDescription, viewController: self)
+            Activity.removeIndicator(parentView: self.view, childView: self.activityIndicator)
                     print("Registration Auth Error",error.localizedDescription)
                 }
                 if let authResult = authResult {
@@ -100,11 +129,14 @@ class RegisterPageViewController: UIViewController {
                     uploadMeta.contentType = "image/jpeg"
                     storageRef.putData(imageData, metadata: uploadMeta) { storageMeta, error in
                         if let error = error {
+                            Alert.showAlert(strTitle: "Error", strMessage: error.localizedDescription, viewController: self)
+                         Activity.removeIndicator(parentView: self.view, childView: self.activityIndicator)
                             print("Registration Storage Error",error.localizedDescription)
                         }
                         storageRef.downloadURL { url, error in
                             if let error = error {
                                 print("Registration Storage Download Url Error",error.localizedDescription)
+                                
                             }
                             if let url = url {
                                 print("URL",url.absoluteString)
@@ -132,18 +164,10 @@ class RegisterPageViewController: UIViewController {
                     }
                 }
             }
-        }
-//        else {
-//            let alert = UIAlertController(title: "ERROR", message: "please Enter name, email,password in the correct format", preferredStyle: .alert)
-//            let dismissAction = UIAlertAction(title: "ok", style: .default) { Action in
-//                self.dismiss(animated: true, completion: nil)
-//            }
-        
     }
     
-    
 }
-//}
+}
 extension RegisterPageViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
     @objc func selectImage() {

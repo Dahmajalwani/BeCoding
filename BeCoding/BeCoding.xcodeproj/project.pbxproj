@@ -12,7 +12,6 @@
 		EA6E4C54277C565E00626E93 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6E4C53277C565E00626E93 /* Course.swift */; };
 		EA6E4C56277C591900626E93 /* InformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6E4C55277C591900626E93 /* InformationViewController.swift */; };
 		EA6E4C58277C5EC600626E93 /* AddInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6E4C57277C5EC600626E93 /* AddInformationViewController.swift */; };
-		EA7C026627870A8A00D3C3AB /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7C026527870A8A00D3C3AB /* ProfileViewController.swift */; };
 		EA7C2A1E2782DA7100ED1310 /* BundleExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7C2A1D2782DA7100ED1310 /* BundleExtention.swift */; };
 		EA7F4D142779B0F400574DCF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7F4D132779B0F400574DCF /* AppDelegate.swift */; };
 		EA7F4D162779B0F400574DCF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7F4D152779B0F400574DCF /* SceneDelegate.swift */; };
@@ -24,7 +23,12 @@
 		EA7F4D3D277B2AFD00574DCF /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = EA7F4D3C277B2AFD00574DCF /* FirebaseAuth */; };
 		EA7F4D3F277B2AFD00574DCF /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = EA7F4D3E277B2AFD00574DCF /* FirebaseFirestore */; };
 		EA7F4D41277B2AFD00574DCF /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = EA7F4D40277B2AFD00574DCF /* FirebaseStorage */; };
+		EA917806278B655A00486410 /* BasicsInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA917805278B655A00486410 /* BasicsInformationViewController.swift */; };
+		EA917808278B66CC00486410 /* ViewControllerForShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA917807278B66CC00486410 /* ViewControllerForShow.swift */; };
+		EA91780A278C19FA00486410 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA917809278C19FA00486410 /* Item.swift */; };
+		EA91780C278D8D5100486410 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA91780B278D8D5100486410 /* Alert.swift */; };
 		EA94F72F2783AFB500806C4A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA94F7312783AFB500806C4A /* Localizable.strings */; };
+		EAB8516127904AB900BDF846 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = EAB8516027904AB900BDF846 /* IQKeyboardManagerSwift */; };
 		EAC11C0B277B3BB600FE981B /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = EAC11C0A277B3BB600FE981B /* .gitignore */; };
 		EAC11C0D277B3BD700FE981B /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = EAC11C0C277B3BD700FE981B /* README.md */; };
 		EAC11C0F277B45BD00FE981B /* RegisterPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC11C0E277B45BD00FE981B /* RegisterPageViewController.swift */; };
@@ -40,7 +44,6 @@
 		EA6E4C53277C565E00626E93 /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
 		EA6E4C55277C591900626E93 /* InformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationViewController.swift; sourceTree = "<group>"; };
 		EA6E4C57277C5EC600626E93 /* AddInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddInformationViewController.swift; sourceTree = "<group>"; };
-		EA7C026527870A8A00D3C3AB /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		EA7C2A192782D81600ED1310 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Main.strings; sourceTree = "<group>"; };
 		EA7C2A1A2782D81600ED1310 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		EA7C2A1C2782D9F200ED1310 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
@@ -54,6 +57,10 @@
 		EA7F4D1F2779B0F700574DCF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EA7F4D212779B0F700574DCF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA7F4D39277B28FA00574DCF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		EA917805278B655A00486410 /* BasicsInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicsInformationViewController.swift; sourceTree = "<group>"; };
+		EA917807278B66CC00486410 /* ViewControllerForShow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerForShow.swift; sourceTree = "<group>"; };
+		EA917809278C19FA00486410 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		EA91780B278D8D5100486410 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		EA94F7302783AFB500806C4A /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
 		EA94F7322783AFB800806C4A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		EAC11C0A277B3BB600FE981B /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = .gitignore; path = ../.gitignore; sourceTree = "<group>"; };
@@ -71,6 +78,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA7F4D3D277B2AFD00574DCF /* FirebaseAuth in Frameworks */,
+				EAB8516127904AB900BDF846 /* IQKeyboardManagerSwift in Frameworks */,
 				EA7F4D3F277B2AFD00574DCF /* FirebaseFirestore in Frameworks */,
 				EA7F4D41277B2AFD00574DCF /* FirebaseStorage in Frameworks */,
 			);
@@ -119,7 +127,9 @@
 			isa = PBXGroup;
 			children = (
 				EA6E4C51277C489A00626E93 /* User.swift */,
+				EA917809278C19FA00486410 /* Item.swift */,
 				EA6E4C53277C565E00626E93 /* Course.swift */,
+				EA91780B278D8D5100486410 /* Alert.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -142,8 +152,9 @@
 				EAC11C17277B9F2F00FE981B /* CourseNavigationController.swift */,
 				EA6E4C55277C591900626E93 /* InformationViewController.swift */,
 				EA6E4C57277C5EC600626E93 /* AddInformationViewController.swift */,
-				EA7C026527870A8A00D3C3AB /* ProfileViewController.swift */,
 				EA7C2A1D2782DA7100ED1310 /* BundleExtention.swift */,
+				EA917805278B655A00486410 /* BasicsInformationViewController.swift */,
+				EA917807278B66CC00486410 /* ViewControllerForShow.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -177,6 +188,7 @@
 				EA7F4D3C277B2AFD00574DCF /* FirebaseAuth */,
 				EA7F4D3E277B2AFD00574DCF /* FirebaseFirestore */,
 				EA7F4D40277B2AFD00574DCF /* FirebaseStorage */,
+				EAB8516027904AB900BDF846 /* IQKeyboardManagerSwift */,
 			);
 			productName = BeCoding;
 			productReference = EA7F4D102779B0F400574DCF /* BeCoding.app */;
@@ -209,6 +221,7 @@
 			mainGroup = EA7F4D072779B0F400574DCF;
 			packageReferences = (
 				EA7F4D3B277B2AFD00574DCF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				EAB8515F27904AB900BDF846 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 			);
 			productRefGroup = EA7F4D112779B0F400574DCF /* Products */;
 			projectDirPath = "";
@@ -246,16 +259,19 @@
 				EA6D2210277C836B008D2113 /* CourseCollectionViewCell.swift in Sources */,
 				EAC11C18277B9F2F00FE981B /* CourseNavigationController.swift in Sources */,
 				EA7C2A1E2782DA7100ED1310 /* BundleExtention.swift in Sources */,
+				EA91780C278D8D5100486410 /* Alert.swift in Sources */,
 				EA6E4C58277C5EC600626E93 /* AddInformationViewController.swift in Sources */,
 				EAC11C14277B47BA00FE981B /* Activity.swift in Sources */,
 				EAC11C12277B472100FE981B /* ImageView.swift in Sources */,
 				EAC11C0F277B45BD00FE981B /* RegisterPageViewController.swift in Sources */,
 				EA7F4D182779B0F400574DCF /* LandingViewController.swift in Sources */,
+				EA91780A278C19FA00486410 /* Item.swift in Sources */,
 				EA6E4C52277C489A00626E93 /* User.swift in Sources */,
 				EA7F4D142779B0F400574DCF /* AppDelegate.swift in Sources */,
-				EA7C026627870A8A00D3C3AB /* ProfileViewController.swift in Sources */,
 				EAC11C16277B4F3100FE981B /* LoginPageViewController.swift in Sources */,
 				EA7F4D162779B0F400574DCF /* SceneDelegate.swift in Sources */,
+				EA917806278B655A00486410 /* BasicsInformationViewController.swift in Sources */,
+				EA917808278B66CC00486410 /* ViewControllerForShow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -497,6 +513,14 @@
 				minimumVersion = 8.0.0;
 			};
 		};
+		EAB8515F27904AB900BDF846 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -514,6 +538,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = EA7F4D3B277B2AFD00574DCF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		EAB8516027904AB900BDF846 /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EAB8515F27904AB900BDF846 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

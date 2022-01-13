@@ -11,6 +11,21 @@ class AddInformationViewController: UIViewController {
     var selectedCourse:Course?
     var selectedCourseImage:UIImage?
     
+    
+    @IBOutlet weak var viewHidderr: UIView!
+    {
+        didSet{
+            viewHidderr.layer.borderColor = UIColor.tertiarySystemBackground.cgColor
+            viewHidderr.layer.borderWidth = 0
+            viewHidderr.layer.cornerRadius = 20
+            viewHidderr.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
+            viewHidderr.layer.masksToBounds = true
+            viewHidderr.isUserInteractionEnabled = true
+        }
+    }
+    
+    
+    
     @IBOutlet weak var titleLabel: UILabel!
     {
         didSet {
@@ -36,12 +51,13 @@ class AddInformationViewController: UIViewController {
         }
     }
     @IBOutlet weak var addButton: UIButton!
-    @IBOutlet weak var userImageView: UIImageView!{
+    @IBOutlet weak var userImageView: UIImageView!
+    {
         didSet {
           
-                    userImageView.layer.borderColor = UIColor.systemGreen.cgColor
+                    userImageView.layer.borderColor = UIColor.systemGray2.cgColor
             userImageView.layer.borderWidth = 1.0
-                    userImageView.layer.cornerRadius = userImageView.bounds.height / 2
+//                    userImageView.layer.cornerRadius = userImageView.bounds.height / 2
                     userImageView.layer.masksToBounds = true
                     userImageView.isUserInteractionEnabled = true
             let tabGesture = UITapGestureRecognizer(target: self, action: #selector(chooseImage))
@@ -63,6 +79,7 @@ class AddInformationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "backButton".localized, style: .plain, target: nil, action: nil)
+        view.addGestureRecognizer(UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing(_:))))
         
         if let selectedCourse = selectedCourse,
         let selectedCourseImage = selectedCourseImage{

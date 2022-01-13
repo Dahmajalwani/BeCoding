@@ -12,6 +12,21 @@ class InformationViewController: UIViewController {
     var selectedCourse:Course?
     var selectedCourseImage:UIImage?
     
+    
+    
+    @IBOutlet weak var viewHidderr: UIView!
+    {
+        didSet{
+            viewHidderr.layer.borderColor = UIColor.tertiarySystemBackground.cgColor
+            viewHidderr.layer.borderWidth = 0
+            viewHidderr.layer.cornerRadius = 20
+            viewHidderr.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
+            viewHidderr.layer.masksToBounds = true
+            viewHidderr.isUserInteractionEnabled = true
+        }
+    }
+    
+    
     @IBOutlet weak var titleLabell: UILabel!
     {
         didSet {
