@@ -10,6 +10,19 @@ import UIKit
 
 class BasicsInformationViewController: UIViewController {
 
+    @IBOutlet weak var viewHidder: UIView!
+    {
+        didSet{
+            viewHidder.layer.borderColor = UIColor.tertiarySystemBackground.cgColor
+            viewHidder.layer.borderWidth = 0
+            viewHidder.layer.cornerRadius = 20
+            viewHidder.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
+            viewHidder.layer.masksToBounds = true
+            viewHidder.isUserInteractionEnabled = true
+        }
+    }
+    
+    
     @IBOutlet weak var theTableView: UITableView! {
         didSet {
         theTableView.delegate = self
@@ -76,7 +89,6 @@ extension BasicsInformationViewController: UITableViewDelegate {
         let label = UILabel(frame: CGRect(x: 10, y: 0, width: UIScreen.main.bounds.width, height: 40))
         label.text = sectionTitles[section]
         label.textColor = .white
-//        label.textAlignment = .center
         view.addSubview(label)
         return view
     }

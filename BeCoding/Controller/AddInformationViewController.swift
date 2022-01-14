@@ -55,14 +55,12 @@ class AddInformationViewController: UIViewController {
     {
         didSet {
           
-                    userImageView.layer.borderColor = UIColor.systemGray2.cgColor
+            userImageView.layer.borderColor = UIColor.systemGray2.cgColor
             userImageView.layer.borderWidth = 1.0
-//                    userImageView.layer.cornerRadius = userImageView.bounds.height / 2
-                    userImageView.layer.masksToBounds = true
-                    userImageView.isUserInteractionEnabled = true
+            userImageView.layer.masksToBounds = true
+            userImageView.isUserInteractionEnabled = true
             let tabGesture = UITapGestureRecognizer(target: self, action: #selector(chooseImage))
-                    userImageView.addGestureRecognizer(tabGesture)
-            
+            userImageView.addGestureRecognizer(tabGesture)
             userImageView.isUserInteractionEnabled = true
             let tapGesture = UITapGestureRecognizer(target: self, action: #selector(chooseImage))
             userImageView.addGestureRecognizer(tapGesture)
@@ -73,8 +71,6 @@ class AddInformationViewController: UIViewController {
     @IBOutlet weak var userLangugesTextField: UITextField!
     @IBOutlet weak var userinstructionTextField: UITextField!
   
-    
-    
     let activityIndicator = UIActivityIndicatorView()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -127,13 +123,10 @@ class AddInformationViewController: UIViewController {
            let imageData = image.jpegData(compressionQuality: 0.75),
            let title = userTitleTextField.text,
            let description = userDescriptionTextField.text,
-         // let id = userDescriptionTextField.text,
-          // let name = userDescriptionTextField.text,
            let instruction = userinstructionTextField.text,
            let language = userLangugesTextField.text,
            let currentUser = Auth.auth().currentUser {
             Activity.showIndicator(parentView: self.view, childView: activityIndicator)
-//            ref.addDocument(data:)
             var postId = ""
             if let selectedCourse = selectedCourse {
                 postId = selectedCourse.user.id
@@ -155,9 +148,7 @@ class AddInformationViewController: UIViewController {
                         if let selectedCourse = self.selectedCourse {
                             postData = [
                             "userId":selectedCourse.user.id,
-//                                "userId":id,
                                 "title":title,
-                                //"name":name,
                                 "description":description,
                                 "imageUrl":url.absoluteString,
                                 "instruction": instruction,
@@ -165,12 +156,10 @@ class AddInformationViewController: UIViewController {
                                 "createdAt":selectedCourse.createdAt ?? FieldValue.serverTimestamp(),
                                 "updatedAt": FieldValue.serverTimestamp()
                             ]
-                            print("******")
                         }else {
                             postData = [
                                 "userId":currentUser.uid,
                                 "title":title,
-                              //  "name":name,
                                 "description":description,
                                 "imageUrl":url.absoluteString,
                                 "instruction": instruction,
@@ -178,7 +167,6 @@ class AddInformationViewController: UIViewController {
                                 "createdAt":FieldValue.serverTimestamp(),
                                 "updatedAt": FieldValue.serverTimestamp()
                             ]
-                            print("((((((")
                         }
                         ref.document(postId).setData(postData) { error in
                             if let error = error {

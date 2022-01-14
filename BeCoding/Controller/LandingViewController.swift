@@ -17,15 +17,12 @@ class LandingViewController: UIViewController {
     viewWelcome.layer.borderColor = UIColor.tertiarySystemBackground.cgColor
     viewWelcome.layer.borderWidth = 0
     viewWelcome.layer.cornerRadius = 20
-            viewWelcome.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
-//            viewWelcome.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMinXMinYCorner]
+    viewWelcome.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
     viewWelcome.layer.masksToBounds = true
     viewWelcome.isUserInteractionEnabled = true
         }
     }
-    
-    
-    
+  
     @IBOutlet weak var imageWelcomePage: UIImageView!
     {
         didSet {
@@ -37,8 +34,6 @@ class LandingViewController: UIViewController {
            
         }
     }
-    
-    
     
 //    Language change
     @IBOutlet weak var langugeSegment: UISegmentedControl! {
@@ -83,12 +78,6 @@ class LandingViewController: UIViewController {
             }
         }
         
-        @IBOutlet weak var registerLabel: UILabel! {
-            
-            didSet {
-                registerLabel.text = "RegisterAs".localized
-            }
-        }
     @IBOutlet weak var langugeChangeLabel: UILabel! {
         
         didSet {
@@ -99,7 +88,7 @@ class LandingViewController: UIViewController {
         
         @IBOutlet weak var newRegisterButton: UIButton! {
             didSet {
-                newRegisterButton.setTitle(NSLocalizedString("New", tableName: "Localizable", comment: ""),for: .normal)
+                newRegisterButton.setTitle(NSLocalizedString("Register", tableName: "Localizable", comment: ""),for: .normal)
             }
         }
         override func viewDidLoad() {

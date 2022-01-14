@@ -21,8 +21,6 @@ class CourseCollectionViewCell: UICollectionViewCell {
             userImageView.layer.cornerRadius = userImageView.frame.size.height / 2
             userImageView.layer.masksToBounds = true
             userImageView.isUserInteractionEnabled = true
-//            let tabGesture = UITapGestureRecognizer(target: self, action: #selector(selectImage))
-//            userImageView.addGestureRecognizer(tabGesture)
         }
     }
     

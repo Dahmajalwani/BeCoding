@@ -68,10 +68,27 @@ class LoginPageViewController: UIViewController {
             passwordTextField.placeholder = "enterPassoword".localized
         }
     }
+    
+    @IBOutlet weak var eyePass: UIButton!
+    @IBAction func eyePas(_ sender: UIButton) {
+            passwordTextField.isSecureTextEntry.toggle()
+            if passwordTextField.isSecureTextEntry {
+                if let image = UIImage(systemName: "eye.fill") {
+                    sender.setImage(image, for: .normal)
+                }
+            } else {
+                if let image = UIImage(systemName: "eye.slash.fill"){
+                    sender.setImage(image, for: .normal)
+                }
+            }
+        }
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "backButton".localized, style: .plain, target: nil, action: nil)
         view.addGestureRecognizer(UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing(_:))))
+        passwordTextField.rightView = eyePass
+        passwordTextField.rightViewMode = .whileEditing
     }
     @IBAction func signButton(_ sender: Any) {
         if let email = emailTextField.text,

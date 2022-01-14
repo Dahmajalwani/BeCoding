@@ -17,13 +17,10 @@ class RegisterPageViewController: UIViewController {
             viewHidder.layer.borderWidth = 0
             viewHidder.layer.cornerRadius = 20
             viewHidder.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
-//            viewWelcome.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMinXMinYCorner]
             viewHidder.layer.masksToBounds = true
             viewHidder.isUserInteractionEnabled = true
         }
     }
-    
-    
     @IBOutlet weak var signUpLable: UILabel!
     {
         didSet {
@@ -61,6 +58,37 @@ class RegisterPageViewController: UIViewController {
             continueButtonOutlit.setTitle(NSLocalizedString("Continue", tableName: "Localizable", comment: ""),for: .normal)
         }
     }
+    
+    @IBOutlet weak var eyePass: UIButton!
+    
+    @IBOutlet weak var eyepasss: UIButton!
+    
+    @IBAction func eyePas(_ sender: UIButton) {
+            passwordTextField.isSecureTextEntry.toggle()
+            if passwordTextField.isSecureTextEntry {
+                if let image = UIImage(systemName: "eye.fill") {
+                    sender.setImage(image, for: .normal)
+                }
+            } else {
+                if let image = UIImage(systemName: "eye.slash.fill"){
+                    sender.setImage(image, for: .normal)
+                }
+            }
+        }
+        
+        @IBAction func changePasswordVisibility(_ sender: UIButton) {
+            confirmPasswordTextField.isSecureTextEntry.toggle()
+            if confirmPasswordTextField.isSecureTextEntry {
+                if let image = UIImage(systemName: "eye.fill") {
+                    sender.setImage(image, for: .normal)
+                }
+            } else {
+                if let image = UIImage(systemName: "eye.slash.fill"){
+                    sender.setImage(image, for: .normal)
+                }
+            }
+        }
+    
     let imagePickerController = UIImagePickerController()
     var activityIndicator = UIActivityIndicatorView()
     @IBOutlet weak var userImageView: UIImageView! {
@@ -105,6 +133,12 @@ class RegisterPageViewController: UIViewController {
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "backButton".localized, style: .plain, target: nil, action: nil)
         imagePickerController.delegate = self
         view.addGestureRecognizer(UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing(_:))))
+        
+        passwordTextField.rightView = eyePass
+        passwordTextField.rightViewMode = .whileEditing
+               
+        confirmPasswordTextField.rightView = eyepasss
+        confirmPasswordTextField.rightViewMode = .whileEditing
     }
     
     @IBAction func registerButtonToContinue(_ sender: Any) {
@@ -144,7 +178,6 @@ class RegisterPageViewController: UIViewController {
                                 let userData: [String:String] = [
                                     "id":authResult.user.uid,
                                     "name":name,
-//                                    "title":title,
                                     "email":email,
                                     "imageUrl":url.absoluteString
                                 ]

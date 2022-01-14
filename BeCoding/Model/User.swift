@@ -12,7 +12,6 @@ struct User {
     var name = ""
     var imageUrl = ""
     var email = ""
-//    var createdAt:Timestamp?
     
     init(dict:[String:Any]) {
         if let id = dict["id"] as? String,
@@ -23,7 +22,6 @@ struct User {
             self.imageUrl = imageUrl
             self.name = name
             self.email = email
-//            self.createdAt = createdAt
         }
     }
 }

@@ -11,6 +11,17 @@ import UIKit
 
 class ViewControllerForShow: UIViewController{
     
+    @IBOutlet weak var viewHidder: UIView!
+    {
+        didSet{
+            viewHidder.layer.borderColor = UIColor.tertiarySystemBackground.cgColor
+            viewHidder.layer.borderWidth = 0
+            viewHidder.layer.cornerRadius = 20
+            viewHidder.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
+            viewHidder.layer.masksToBounds = true
+            viewHidder.isUserInteractionEnabled = true
+        }
+    }
     @IBOutlet weak var topicTitle: UILabel!
 
     @IBOutlet weak var imageView: UIImageView!
